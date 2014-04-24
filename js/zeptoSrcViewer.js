@@ -4,7 +4,7 @@ Zepto(function(z) {
   var _funcList = []
   , _modList = []
   , maxOptions = 10
-  , isScrollable = false
+  , isScrollable = true
 
   , _getFuncList = function(obj) {
     if (!obj || (typeof obj !== 'function' && typeof obj !== 'object')) {
