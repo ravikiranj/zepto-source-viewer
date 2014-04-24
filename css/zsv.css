@@ -1,0 +1,14 @@
+body {
+  margin: 5px;
+  padding: 5px;
+}
+
+#funcText {
+  width: 200px;
+  padding: 2px;
+  font-family: inherit;
+}
+
+.autoCompleteContainer div {
+  padding: 2px;
+}
