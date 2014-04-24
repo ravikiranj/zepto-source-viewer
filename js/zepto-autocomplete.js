@@ -3,7 +3,7 @@
   	init:    function(options) {
   		var settings = $.extend({
   			data:   [],
-  			height: 20,
+  			//height: 20,
         maxOptions: 100,
         scrollable: true,
         optionBackground:    '#FFFFFF',
@@ -25,7 +25,10 @@
   		}
 
       function createStorage() {
-        var storage = $('<div class="autoCompleteContainer">');
+        var storage = $('<div>', {
+          'class' : settings.containerClass ? settings.containerClass : "",
+          'id' : settings.containerId ? settings.containerId : ""
+        });
         $('body').append(storage);
         var position = { left : $this.offset().left , top : $this.offset().top + $this.height() }
         storage.width($this.width() - 2);
@@ -70,7 +73,11 @@
         for (var i = 0; i < settings.data.length; i++) {
           var string = settings.data[i];
           if (string.toLowerCase().indexOf(value.toLowerCase()) != -1 && value) {
-            var record = $('<div>').html(settings.data[i]).css('height', settings.height + 'px');
+            var record = $('<div>', {
+                           'class' : settings.resultClass ? settings.resultClass : ""
+                         })
+                         .html(settings.data[i])
+                         .css('height', settings.height + 'px');
             storage.append(record);
           }
         }
