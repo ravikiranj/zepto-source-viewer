@@ -51,19 +51,22 @@ Zepto(function(z) {
       //console.log(fName);
       funcDefn = _getFuncDefn(fName);
       if (funcDefn) {
-        funcDOM = z("<pre><code data-language='javascript'></code></pre>");
-        funcDOM.find('code').append(funcDefn);
+        funcDOM = document.createElement('div');
+        funcDOM.innerHTML = "<pre><code data-language='javascript'>" + funcDefn + "</code></pre>";
+        // Rainbow needs an actual DOM element and not Zepto elem
         Rainbow.color(funcDOM, function() {
           z('#funcDefn').empty();
           z('#funcDefn').append(funcDOM);
         });
+        // Update Name
         z('#funcName').empty();
         z('#funcName').append('<p>Function: '+fName+'</p>')
       } else {
         funcDOM = z("<p>Could not find a matching definition for <strong>"+fName+"</strong></p>");
         z('#funcDefn').empty();
-        z('#funcName').empty();
         z('#funcDefn').append(funcDOM);
+        // Clear Name
+        z('#funcName').empty();
       }
     });
   }
