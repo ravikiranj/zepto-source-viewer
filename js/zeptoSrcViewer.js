@@ -52,6 +52,10 @@ Zepto(function(z) {
       funcDefn = _getFuncDefn(fName);
       if (funcDefn) {
         funcDOM = document.createElement('div');
+        // Prettify
+        funcDefn = js_beautify(funcDefn, {
+          'indent_size': 2
+        });
         funcDOM.innerHTML = "<pre><code data-language='javascript'>" + funcDefn + "</code></pre>";
         // Rainbow needs an actual DOM element and not Zepto elem
         Rainbow.color(funcDOM, function() {
